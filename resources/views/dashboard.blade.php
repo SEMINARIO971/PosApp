@@ -1,6 +1,6 @@
 <x-app-layout>
    
 
-                    {{ __("You're logged in!") }}
+                    {{ __("Te haz logueado!") }}
            
 </x-app-layout>

@@ -53,7 +53,7 @@ class ClientController extends Controller
         ]));
 
         $cliente->img= $request->file('img')->store('img','public');
-        $cliente->save();
+         $cliente->save();
 
         return redirect()->route('clients.index')->with('success', 'Client created successfully.'); 
 
@@ -103,4 +103,6 @@ class ClientController extends Controller
         $client->delete();
         return redirect()->route('clients.index')->with('success', 'Client deleted successfully.');
     }
+
+    
 }
