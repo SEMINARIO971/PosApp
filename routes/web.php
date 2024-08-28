@@ -46,8 +46,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/permisos/{permission}/edit', [PermisoController::class, 'edit'])->name('permisos.edit');
     Route::get('/permisos/create', [PermisoController::class, 'create'])->name('permisos.create');
     Route::post('/permisos', [PermisoController::class, 'store'])->name('permisos.store');
+    Route::put('/permisos/{id}', [PermisoController::class, 'update'])->name('permissions.update');
 
     Route::delete('/permisos/{permission}', [PermisoController::class, 'destroy'])->name('permisos.destroy');
+
+    //Usuarios del sistema
+    Route::get('/usuarios/crear', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
 
 
 });

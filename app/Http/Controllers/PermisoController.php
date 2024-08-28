@@ -49,17 +49,26 @@ class PermisoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        //
+        $permission = Permission::findOrFail($id);
+        return view('permisos.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+    
+        $permission = Permission::findOrFail($id);
+        $permission->name = $request->input('name');
+        $permission->save();
+    
+        return redirect()->route('permisos.index')->with('success', 'Permission Actualizado!!.');
     }
 
     /**
@@ -67,6 +76,6 @@ class PermisoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+       
     }
 }

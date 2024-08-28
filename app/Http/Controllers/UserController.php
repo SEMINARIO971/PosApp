@@ -23,7 +23,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $roles = Role::all();
+        return view('usuarios.create', compact('roles'));
     }
 
     /**
@@ -31,7 +32,24 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'role' => 'required',  // Validar que se seleccionó un rol
+        ]);
+    
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'password' => bcrypt($request->input('password')),
+        ]);
+    
+        // Asignar el rol seleccionado al usuario
+        $role = Role::findByName($request->input('role'));
+        $user->assignRole($role);
+    
+        return redirect()->route('usuarios.index')->with('success', 'Nuevo Usuario creado!!.');
     }
 
     /**
