@@ -53,6 +53,12 @@ Route::middleware('auth')->group(function () {
     //Usuarios del sistema
     Route::get('/usuarios/crear', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/usuarios/{id}/editar',[UserController::class, 'edit'])->name('users.edit');
+    Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('users.update');
+
+
+
 
 
 });

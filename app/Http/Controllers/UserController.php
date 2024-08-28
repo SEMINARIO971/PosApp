@@ -65,23 +65,44 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $roles = Role::all();
+        return view('usuarios.edit', compact('user', 'roles'));
     }
+    
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,  $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . $id,
+            'role' => 'required',
+        ]);
+    
+        $user = User::findOrFail($id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
+    
+        // Sync roles
+        $role = Role::findByName($request->input('role'));
+        $user->syncRoles([$role]);
+    
+        return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado!!.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy( $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+    
+        return redirect()->route('usuarios.index')->with('success', 'Usuario Eliminado.');
     }
 
     public function assignRole(Request $request, $id)

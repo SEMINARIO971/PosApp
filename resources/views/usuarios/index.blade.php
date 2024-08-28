@@ -29,6 +29,8 @@
                     <th class="w-1/4 px-4 py-2">Correo Electrónico</th>
                     <th class="w-1/4 px-4 py-2">Rol Actual</th>
                     <th class="w-1/4 px-4 py-2">Asignar Rol</th>
+                    <th class="w-1/4 px-4 py-2">Acciones </th>
+
                 </tr>
             </thead>
             <tbody>
@@ -40,17 +42,32 @@
                         <td class="border px-4 py-2 text-gray-700">
                             {{ $user->roles->pluck('name')->implode(', ') ?: 'Sin Rol' }}
                         </td>
-                        <td class="border px-4 py-2">
+                        <td class="border px-4 py-2 ">
                             <form action="{{ route('users.assignRole', $user->id) }}" method="POST">
                                 @csrf
-                                <select name="role" class="p-1 rounded text-gray-600">
-                                    <option value="">Seleccione un Rol</option>
+                                <div class="flex gap-2">
 
-                                    @foreach($roles as $role)
-                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                                <button type="submit" class="bg-blue-500 text-white p-2 rounded">Asignar</button>
+                                    <select name="role" class="p-1 rounded text-gray-600">
+                                        <option value="">Seleccione un Rol</option>
+    
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <button type="submit" class="bg-blue-500 text-white p-2 rounded">Asignar</button>
+                                </div>
+                            </form>
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-200 flex">
+                            <a href="{{ route('users.edit', $user->id) }}" class="inline-flex items-center px-4 py-2 mr-2 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                Editar
+                            </a>
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" onclick="return confirm('Estas seguro de eliminar el Usuario {{$user->name}}?');">
+                                    Borrar
+                                </button>
                             </form>
                         </td>
                     </tr>
