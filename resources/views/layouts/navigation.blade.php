@@ -1,93 +1,34 @@
-<nav x-data="{ open: false }" class="bg-[#05A6F0] flex-col dark:bg-gray-800 border-b border-gray-100 dark:border-gray-700">
-    <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex flex-col h-16">
-            <div >
-                <!-- Logo -->
-                <div class="shrink-0 flex items-center text-white p-4">
-                    <a href="{{ route('dashboard') }}">
-                        <img src="{{ asset('img/LogoEshop.png') }}" alt="" class="block h-16 w-auto fill-current rounded-full">
-                        {{-- <x-application-logo class="block h-16 w-auto fill-current  dark:text-gray-200" /> --}}
-                    </a>
-                </div>
-<!-- perfil usuario -->
-               
+<div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-gray-400 md:w-64 dark-mode:text-gray-200 dark-mode:bg-gray-800" x-data="{ open: false }">
+    <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
+        <img src="{{ asset('img/LogoEshop.png') }}" alt="" class="block h-16 w-auto fill-current rounded-full">
 
-                <!-- Navigation Links -->
-                <div class="hidden  sm:-my-px sm:ms-10 sm:flex flex-col ">
-                    <x-nav-link class="text-white" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                    {{-- <x-nav-link class="text-white mt-4" :href="route('clientes')" :active="request()->routeIs('clientes')">
-                        {{ __('Clientes') }}
-                    </x-nav-link>
-                    <x-nav-link class="text-white" :href="route('servicios')" :active="request()->routeIs('servicios')">
-                        {{ __('Servicios') }}
-                    </x-nav-link>--}}
-                    <x-nav-link class="text-white" :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
-                        {{ __('Usuarios') }}
-                    </x-nav-link> 
-
-                    <ul>
-                     
-                        <li class="mb-4">
-                            <!-- Dropdown -->
-                            <div x-data="{ open: false }">
-                                <button @click="open = !open" class="flex items-center  w-full rounded hover:bg-blue-800 focus:outline-none">
-                                    
-                                    <span class="text-white">Roles</span>
-                                    <svg class="w-4 h-4 ml-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <!-- Dropdown Links -->
-                                <div x-show="open" class="mt-2 space-y-2 pl-8">
-                                    <a href="{{route('roles.index')}}" class="block p-2 rounded hover:bg-blue-800 text-white">Listar</a>
-                                
-                                    
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-1">
-                            <!-- Dropdown -->
-                            <div x-data="{ open: false }">
-                                <button @click="open = !open" class="flex items-center  w-full rounded hover:bg-blue-800 focus:outline-none">
-                                    <span class="text-white">Permisos</span>
-                                    <svg class="w-4 h-4 ml-auto text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                                </button>
-                                <!-- Dropdown Links -->
-                                <div x-show="open" class="mt-2 space-y-2 pl-8">
-                                    <a href="{{route('permisos.index')}}" class="block p-2 rounded hover:bg-blue-800 text-white">Listar</a>
-                                    
-                                </div>
-                            </div>
-                        </li>
-                      
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Settings Dropdown -->
-           
-            <!-- Hamburger -->
-            <div class="-me-2 flex items-center sm:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 dark:text-gray-500 hover:text-gray-500 dark:hover:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-900 focus:outline-none focus:bg-gray-100 dark:focus:bg-gray-900 focus:text-gray-500 dark:focus:text-gray-400 transition duration-150 ease-in-out">
-                    <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                        <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
+        <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Pos V 1.0</a>
+        <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
+            <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+            </svg>
+        </button>
     </div>
-
-    <!-- Responsive Navigation Menu -->
-    <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+        <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
+            <x-nav-link  :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-        </div>
+            </x-nav-link>
+          <x-nav-link  :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                        {{ __('Roles') }}
+                    </x-nav-link>
+                    <x-nav-link  :href="route('permisos.index')" :active="request()->routeIs('permisos.index')">
+                        {{ __('Permisos') }}
+                    </x-nav-link>
+                    <x-nav-link  :href="route('usuarios')" :active="request()->routeIs('usuarios')">
+                        {{ __('Usuarios') }}
+                    </x-nav-link>
+                    <x-nav-link  :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
+                        {{ __('Categorias') }}
+                    </x-nav-link>
+                    <x-nav-link  :href="route('productos.index')" :active="request()->routeIs('productos.index')">
+                        {{ __('Productos') }}
+                    </x-nav-link>
 
-        <!-- Responsive Settings Options -->
-        
-    </div>
-</nav>
+        </nav>
+</div>

@@ -1,9 +1,10 @@
 @props(['active'])
 
 @php
+
 $classes = ($active ?? false)
-            ? '  pt-1 dark:p-2 dark:bg-gray-300 dark:rounded-sm text-sm font-medium leading-5 text-gray-900 dark:text-orange-600 focus:outline-none focus:border-indigo-700 transition duration-150 ease-in-out'
-            : '  pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 hover:border-gray-300 dark:hover:border-gray-700 focus:outline-none focus:text-gray-700 dark:focus:text-gray-300 focus:border-gray-300 dark:focus:border-gray-700 transition duration-150 ease-in-out';
+            ? 'block px-4 py-2 mt-2 text-sm font-semibold text-white bg-blue-900 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline'
+            : 'block px-4 py-2 mt-2 text-sm font-semibold text-blue-900 bg-gray-100 rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline';
 @endphp
 
 <a {{ $attributes->merge(['class' => $classes]) }}>

@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PermisoController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +40,7 @@ Route::middleware('auth')->group(function () {
 
 
     //usuarioslistar para roles
-    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
     Route::post('/users/{user}/assign-role', [UserController::class, 'assignRole'])->name('users.assignRole');
 
     //Rutas de permisos
@@ -56,6 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/usuarios/{id}/editar',[UserController::class, 'edit'])->name('users.edit');
     Route::delete('/usuarios/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::put('/usuarios/{id}', [UserController::class, 'update'])->name('users.update');
+
+    //cateogiras
+    Route::resource('categorias', CategoryController::class);
+    //productos
+    Route::resource('productos', ProductController::class);
+
+
 
 
 
