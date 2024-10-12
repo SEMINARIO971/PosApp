@@ -19,6 +19,13 @@
                 <tbody class="text-gray-600 text-sm font-light">
                     @foreach($categories as $category)
                         <tr class="border-b border-gray-200 hover:bg-gray-100">
+                            <td>
+                                @if ($category->image)
+                                <img src="{{ asset('images/' . $category->image) }}" alt="Imagen de {{ $category->name }}" style="width: 150px; height: auto;">
+                            @else
+                                <p>No hay imagen disponible</p>
+                            @endif
+                            </td>
                             <td class="py-3 px-6 text-left whitespace-nowrap dark:text-white">{{ $category->name }}</td>
                             <td class="py-3 px-6 text-left">
                                 <a href="{{ route('categorias.edit', $category->id) }}" class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 mr-2">Editar</a>

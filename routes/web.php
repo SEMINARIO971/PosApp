@@ -5,20 +5,35 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PruebaController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Livewire\PosScreen;
+
+Route::get('/prueba', [PruebaController::class, 'index' ]);
+Route::get('/prueba/usuario', [PruebaController::class, 'usuario' ]);
+Route::get('/pos', PosScreen::class );
+
+Route::post('/prueba', [UserController::class, 'store'])->name('prueba.store');
+
+
+
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    // $cartkey=session()->getId();
+    // $cart= session()->get($cartkey,[]);
 
-Route::middleware('auth')->group(function () {
+    // dd(count($cart));
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+Route::middleware(['auth','role:Administrador'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');

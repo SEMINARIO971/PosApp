@@ -32,23 +32,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request);
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'role' => 'required',  // Validar que se seleccionó un rol
         ]);
-    
+
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => bcrypt($request->input('password')),
         ]);
-    
+
         // Asignar el rol seleccionado al usuario
         $role = Role::findByName($request->input('role'));
+        dd($role);
+
         $user->assignRole($role);
-    
+
         return redirect()->route('usuarios.index')->with('success', 'Nuevo Usuario creado!!.');
     }
 
@@ -69,7 +72,7 @@ class UserController extends Controller
         $roles = Role::all();
         return view('usuarios.edit', compact('user', 'roles'));
     }
-    
+
 
     /**
      * Update the specified resource in storage.
@@ -81,16 +84,16 @@ class UserController extends Controller
             'email' => 'required|string|email|max:255|unique:users,email,' . $id,
             'role' => 'required',
         ]);
-    
+
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->save();
-    
+
         // Sync roles
         $role = Role::findByName($request->input('role'));
         $user->syncRoles([$role]);
-    
+
         return redirect()->route('usuarios.index')->with('success', 'Usuario actualizado!!.');
     }
 
@@ -101,7 +104,7 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         $user->delete();
-    
+
         return redirect()->route('usuarios.index')->with('success', 'Usuario Eliminado.');
     }
 

@@ -30,7 +30,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-     
+
       /*   $request->validate([
             'dpi' => 'required|unique:clients',
             'name' => 'required',
@@ -55,7 +55,7 @@ class ClientController extends Controller
         $cliente->img= $request->file('img')->store('img','public');
          $cliente->save();
 
-        return redirect()->route('clients.index')->with('success', 'Client created successfully.'); 
+        return redirect()->route('clients.index')->with('success', 'Client created successfully.');
 
        /*  Client::create($request->all());
         return redirect()->route('clients.index')->with('success', 'Client created successfully.'); */
@@ -104,5 +104,5 @@ class ClientController extends Controller
         return redirect()->route('clients.index')->with('success', 'Client deleted successfully.');
     }
 
-    
+
 }

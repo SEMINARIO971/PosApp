@@ -23,10 +23,19 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validación para la imagen
         ]);
 
-        Category::create($request->all());
-
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+        } else {
+            $imageName = null;  // Si no se sube ninguna imagen
+        }
+        Category::create([
+            'name' => $request->name,
+            'image' => $imageName, // Guardar el nombre de la imagen en la base de datos
+        ]);
         return redirect()->route('categorias.index')
                         ->with('success', 'Categoria creada!!.');
     }
@@ -38,14 +47,26 @@ class CategoryController extends Controller
 
     public function update(Request $request, Category $categoria)
     {
+        // dd($request);
+
         $request->validate([
             'name' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif', // Validación para la imagen
         ]);
-
-        $categoria->update($request->all());
+// dd($request->hasFile('image'));
+        if ($request->hasFile('image')) {
+            // dd('ingreso');
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+        } else {
+            $imageName = null;  // Si no se sube ninguna imagen
+        }
+        $categoria->name = $request->name;
+        $categoria->image= $imageName;
+        $categoria->save();
 
         return redirect()->route('categorias.index')
-                        ->with('success', 'Categoria acutalizada!!.');
+                        ->with('success', 'Categoria actualizada!!.');
     }
 
     public function destroy(Category $categoria)
