@@ -87,7 +87,7 @@ public function removeFromCart($id){
     function buscar()  {
         if(strlen($this->search)>2){
             $this->products = Product::whereRaw('LOWER(name) LIKE ?', ['%' . strtolower($this->search) . '%'])->get();
-            // dd($this->products);
+
 
         }else{
             $this->products=Product::all();

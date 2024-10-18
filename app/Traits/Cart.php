@@ -33,7 +33,7 @@ trait Cart{
             $mensaje="Articulo Agregado";
 
             }
-// dd($mensaje);
+
             session()->put($cartkey,$cart);
             return $mensaje;
 
@@ -98,7 +98,6 @@ trait Cart{
 
     function clearCart()  {
         $cartkey=$this->cartkey();
-
         session()->forget($cartkey);
     }
 }

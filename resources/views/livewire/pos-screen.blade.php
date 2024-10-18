@@ -2,7 +2,7 @@
     <div class="flex items-center justify-between bg-gray-100 p-4">
         <!-- Logo a la izquierda -->
         <div class="flex items-center">
-          <img src={{ asset('img/logoEshop.png')}} alt="Logo" class="h-12 w-12">
+          <img src={{ asset('img/LogoEshop.png')}} alt="Logo" class="h-12 w-12">
           <span class="ml-2 text-xl font-bold">Mi Tienda de Ropa</span>
         </div>
 
@@ -59,7 +59,7 @@
                             <h5 class="text-lg font-semibold">{{ $product->name }}</h5>
                             <p class="text-gray-600">Q{{ $product->price }}</p>
                             <button id="product{{$product->id}}" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" wire:click="addToCart({{ $product->id }})">
-                                Agregar al Carrito
+                                Agregar
                             </button>
                         </div>
                     </div>

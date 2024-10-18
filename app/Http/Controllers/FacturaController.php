@@ -12,7 +12,6 @@ class FacturaController extends Controller
     {
         // Obtener la venta con el ID
         $venta = Venta::with('detalles.producto')->findOrFail($ventaId); // Asegúrate de tener la relación en el modelo
-// dd($venta);
         // Datos de la tienda
         $storeData = [
             'logo' => public_path('img/logoModa.png'),
@@ -26,6 +25,6 @@ class FacturaController extends Controller
         $pdf = PDF::loadView('facturas.index', compact('venta', 'storeData'));
 
         // Retornar el PDF como descarga
-        return $pdf->download('factura-' . $venta->id . '.pdf');
+        return $pdf->download('factura-' . $venta->Factura . '.pdf');
     }
 }
