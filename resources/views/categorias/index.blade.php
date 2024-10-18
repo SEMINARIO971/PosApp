@@ -12,6 +12,8 @@
             <table class="min-w-full  rounded-lg shadow-lg">
                 <thead>
                     <tr class="bg-blue-900 text-gray-700 uppercase text-sm leading-normal">
+                        <th class="py-3 px-6 text-left text-white">Imagen</th>
+
                         <th class="py-3 px-6 text-left text-white">Nombre</th>
                         <th class="py-3 px-6 text-left text-white">Acciones</th>
                     </tr>
