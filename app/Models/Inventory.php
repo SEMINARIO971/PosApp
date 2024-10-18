@@ -11,8 +11,9 @@ class Inventory extends Model
     protected $table='inventory';
     protected $fillable = ['product_id', 'stock'];
 
+
     public function product()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

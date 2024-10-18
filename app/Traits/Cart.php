@@ -15,10 +15,12 @@ trait Cart{
 
             $price = $product->price;
             $total = round($price*$qty);
+            $mensaje="Error al agregar o actualizar";
 
             if(isset($cart[$product->id])){
                 $cart[$product->id]['qty']+=$qty;
                 $cart[$product->id]['total']+=$total;
+            $mensaje="Articulo Actualizado";
 
             }else{
                 $cart[$product->id]=[
@@ -28,10 +30,12 @@ trait Cart{
                     'qty'=>$qty,
                     'total'=>$total
                 ];
-            }
+            $mensaje="Articulo Agregado";
 
+            }
+// dd($mensaje);
             session()->put($cartkey,$cart);
-            return true;
+            return $mensaje;
 
         } catch (\Throwable $th) {
             //throw $th;
@@ -46,8 +50,8 @@ trait Cart{
                 $price =$cart[$product_id]['price'];
                 $total = round($price*$qty);
 
-                $cart[$product_id]['qty']+=$qty;
-                $cart[$product_id]['total']+=$total;
+                $cart[$product_id]['qty'] = $qty;
+                $cart[$product_id]['total'] = $total;
 
                 session()->put($cartkey,$cart);
                 return true;
@@ -95,6 +99,6 @@ trait Cart{
     function clearCart()  {
         $cartkey=$this->cartkey();
 
-        session()->froget($cartkey);
+        session()->forget($cartkey);
     }
 }

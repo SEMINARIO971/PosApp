@@ -2,36 +2,36 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\FacturaController;
 use App\Http\Controllers\PermisoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PruebaController;
+use App\Http\Controllers\ReporteController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
+use App\Livewire\FinalizarCompra;
 use App\Livewire\PosScreen;
+use App\Models\Venta;
 
 Route::get('/prueba', [PruebaController::class, 'index' ]);
 Route::get('/prueba/usuario', [PruebaController::class, 'usuario' ]);
 Route::get('/pos', PosScreen::class );
+Route::get('/finalizar-compra', FinalizarCompra::class );
+
 
 Route::post('/prueba', [UserController::class, 'store'])->name('prueba.store');
 
-
+Route::get('/factura/{ventaId}', [FacturaController::class, 'generateInvoice']);
 
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    // $cartkey=session()->getId();
-    // $cart= session()->get($cartkey,[]);
-
-    // dd(count($cart));
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [ReporteController::class,'index'])->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth','role:Administrador'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
