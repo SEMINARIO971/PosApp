@@ -15,7 +15,7 @@
                     <x-nav-link class="text-white" :href="route('servicios')" :active="request()->routeIs('servicios')">
                         {{ __('Servicios') }}
                     </x-nav-link>--}}
-                    <x-nav-link class="text-white" :href="route('usuarios')" :active="request()->routeIs('usuarios')">
+                    <x-nav-link class="text-white" :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
                         {{ __('Usuarios') }}
                     </x-nav-link>
                     <x-nav-link class="text-white" :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">

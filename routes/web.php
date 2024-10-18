@@ -55,7 +55,7 @@ Route::middleware(['auth','role:Administrador'])->group(function () {
 
 
     //usuarioslistar para roles
-    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios');
+    Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
     Route::post('/users/{user}/assign-role', [UserController::class, 'assignRole'])->name('users.assignRole');
 
     //Rutas de permisos

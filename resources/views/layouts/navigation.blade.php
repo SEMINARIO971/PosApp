@@ -20,7 +20,7 @@
                     <x-nav-link  :href="route('permisos.index')" :active="request()->routeIs('permisos.index')">
                         {{ __('Permisos') }}
                     </x-nav-link>
-                    <x-nav-link  :href="route('usuarios')" :active="request()->routeIs('usuarios')">
+                    <x-nav-link  :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
                         {{ __('Usuarios') }}
                     </x-nav-link>
                     <x-nav-link  :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
