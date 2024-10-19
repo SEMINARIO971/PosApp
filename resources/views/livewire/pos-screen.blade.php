@@ -1,4 +1,37 @@
 <div class="container mx-auto p-8 bg-gray-400">
+    @if (Route::has('login'))
+    <nav class="bg-gray-800">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex h-16 items-center justify-between">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <img class="h-20 w-20" src="{{ asset('img/logoModa.png')}}" alt="Tienda de Ropa">
+              </div>
+              <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4">
+                 @auth
+                  <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                  <a href="{{ url('/dashboard') }}" class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Ingresar</a>
+                        <a href="{{ url('/pos') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Tienda en Linea</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white">Registrarse</a>
+                        @endif
+                  @endauth
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+        <!-- Mobile menu, show/hide based on menu state. -->
+
+      </nav>
+      @endif
     <div class="flex items-center justify-between bg-gray-100 p-4">
         <!-- Logo a la izquierda -->
         <div class="flex items-center">
