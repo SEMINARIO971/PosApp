@@ -48,7 +48,7 @@ class UserController extends Controller
 
         // Asignar el rol seleccionado al usuario
         $role = Role::findByName($request->input('role'));
-        dd($role);
+        // dd($role);
 
         $user->assignRole($role);
 
