@@ -19,12 +19,12 @@
 
             <div class="mb-4">
                 <label for="Nit" class="block text-sm font-medium text-gray-700">NIT</label>
-                <input type="text" id="Nit" wire:model="Nit" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                <input type="number" id="Nit" wire:model="Nit" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
             </div>
 
             <div class="mb-4">
                 <label for="Telefono" class="block text-sm font-medium text-gray-700">Teléfono</label>
-                <input type="text" id="Telefono" wire:model="Telefono" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                <input type="number" id="Telefono" wire:model="Telefono" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
             </div>
 
             <div class="mb-4">
