@@ -11,24 +11,33 @@
         </button>
     </div>
         <nav :class="{'block': open, 'hidden': !open}" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-            <x-nav-link  :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-nav-link>
-          <x-nav-link  :href="route('roles.index')" :active="request()->routeIs('roles.index')">
-                        {{ __('Roles') }}
-                    </x-nav-link>
-                    <x-nav-link  :href="route('permisos.index')" :active="request()->routeIs('permisos.index')">
-                        {{ __('Permisos') }}
-                    </x-nav-link>
-                    <x-nav-link  :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
-                        {{ __('Usuarios') }}
-                    </x-nav-link>
-                    <x-nav-link  :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
-                        {{ __('Categorias') }}
-                    </x-nav-link>
-                    <x-nav-link  :href="route('productos.index')" :active="request()->routeIs('productos.index')">
-                        {{ __('Productos') }}
-                    </x-nav-link>
 
+            @if(auth()->user()->getRoleNames()->first() =='Administrador')
+                <x-nav-link  :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-nav-link>
+                <x-nav-link  :href="route('roles.index')" :active="request()->routeIs('roles.index')">
+                    {{ __('Roles') }}
+                </x-nav-link>
+                <x-nav-link  :href="route('permisos.index')" :active="request()->routeIs('permisos.index')">
+                    {{ __('Permisos') }}
+                </x-nav-link>
+                <x-nav-link  :href="route('usuarios.index')" :active="request()->routeIs('usuarios.index')">
+                    {{ __('Usuarios') }}
+                </x-nav-link>
+                <x-nav-link  :href="route('categorias.index')" :active="request()->routeIs('categorias.index')">
+                    {{ __('Categorias') }}
+                </x-nav-link>
+                <x-nav-link  :href="route('productos.index')" :active="request()->routeIs('productos.index')">
+                    {{ __('Productos') }}
+                </x-nav-link>
+                @else
+                <x-nav-link  :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-nav-link>
+                <x-nav-link  :href="route('pos')" :active="request()->routeIs('pos')">
+                    {{ __('Pos') }}
+                </x-nav-link>
+            @endif
         </nav>
 </div>

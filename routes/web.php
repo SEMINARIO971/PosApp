@@ -18,7 +18,7 @@ use App\Models\Venta;
 
 Route::get('/prueba', [PruebaController::class, 'index' ]);
 Route::get('/prueba/usuario', [PruebaController::class, 'usuario' ]);
-Route::get('/pos', PosScreen::class );
+Route::get('/pos', PosScreen::class )->name('pos');
 Route::get('/finalizar-compra', FinalizarCompra::class );
 
 

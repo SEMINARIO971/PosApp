@@ -37,7 +37,8 @@ class ReportesLivewire extends Component
     }
     public function mount()
     {
-        // Cargar los datos de ventas (ajusta la consulta según tus necesidades)
+        $this->sales = Venta::all();
+
 
     }
     public function render()

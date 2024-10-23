@@ -2,12 +2,13 @@
     <div class="flex justify-between">
         <select wire:model.live="selectedPeriod" class="border p-2">
             <option value="day">Hoy</option>
+            <option value="day">Hoy</option>
             <option value="week">Esta Semana</option>
             <option value="month">Este Mes</option>
         </select>
     </div>
 
-    <div class="mt-4">
+    <div class="container mx-auto p-4">
         @if(empty($sales))
             <p>No hay ventas en este periodo.</p>
         @else
@@ -29,7 +30,9 @@
                             <td class="border px-4 py-2 text-gray-700">{{ $sale->id }}</td>
                             <td class="border px-4 py-2 text-gray-700">{{ $sale->NombreCliente }}</td>
                             <td class="border px-4 py-2 text-gray-700">{{ $sale->Nit }}</td>
-                            <td class="border px-4 py-2 text-gray-700">{{ $sale->Factura }}</td>
+                            <td class="border px-4 py-2 text-gray-700 flex sm:flex-row">{{ $sale->Factura }}
+                                <a class="bg-orange-600 text-white rounded-sm ml-3 p-2 " href="{{ url('/factura/'.$sale->id)}}">Ver factura</a>
+                            </td>
                             <td class="border px-4 py-2 text-right text-gray-700">{{ $sale->Total }}</td>
                             <td class="border px-4 py-2 text-gray-700">{{ $sale->created_at->format('d/m/Y H:i') }}</td>
                         </tr>

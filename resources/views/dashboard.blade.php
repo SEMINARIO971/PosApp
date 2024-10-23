@@ -1,4 +1,8 @@
 <x-app-layout>
+    @if(auth()->user())
+    <p class="bg-orange-600 text-white p-4 text-2xl font-bold mb-4">Tu rol es: {{ auth()->user()->getRoleNames()->first() }}</p>
+    @endif
+
 
     <livewire:reportes-livewire lazy />
     <div class="flex justify-around bg-gray-300 p-2">
