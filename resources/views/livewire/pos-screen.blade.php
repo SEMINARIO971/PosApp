@@ -75,7 +75,7 @@
                     <li class="p-2 bg-gray-200 rounded-md">
                         <a href="#" wire:click.prevent="filterByCategory({{ $category->id }})" class="text-gray-800 hover:text-blue-500 flex items-center gap-2">
                             <img src="{{ asset('images/' . $category->image) }}" alt="Imagen de {{ $category->name }}" style="width: auto; height: 64px;">
-                           <span class="text-3xl font-bold ml-4">{{ $category->name }}</span>
+                           <span class="text-xl font-bold ml-4">{{ $category->name }}</span>
                         </a>
                     </li>
                 @endforeach
