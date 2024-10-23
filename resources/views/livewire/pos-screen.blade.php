@@ -35,7 +35,7 @@
     <div class="flex items-center justify-between bg-gray-100 p-4">
         <!-- Logo a la izquierda -->
         <div class="flex items-center">
-          <img src={{ asset('img/LogoEshop.png')}} alt="Logo" class="h-12 w-12">
+          <img src={{ asset('img/logoModa.png')}} alt="Logo" class="h-12 w-12">
           <span class="ml-2 text-xl font-bold">Mi Tienda de Ropa</span>
         </div>
 
@@ -69,13 +69,13 @@
     <div class="grid grid-cols-12 gap-4 p-4 bg-yellow-100">
         <!-- Menú de Categorías -->
         <div class="col-span-3 bg-blue-950 p-4">
-            <h4 class="text-xl font-semibold mb-4 text-white">Productos</h4>
+            <h4 class="text-xl font-semibold mb-4 text-white">Menu</h4>
             <ul class="space-y-2">
                 @foreach($categories as $category)
                     <li class="p-2 bg-gray-200 rounded-md">
-                        <a href="#" wire:click.prevent="filterByCategory({{ $category->id }})" class="text-gray-800 hover:text-blue-500">
+                        <a href="#" wire:click.prevent="filterByCategory({{ $category->id }})" class="text-gray-800 hover:text-blue-500 flex items-center gap-2">
                             <img src="{{ asset('images/' . $category->image) }}" alt="Imagen de {{ $category->name }}" style="width: auto; height: 64px;">
-                            {{ $category->name }}
+                           <span class="text-3xl font-bold ml-4">{{ $category->name }}</span>
                         </a>
                     </li>
                 @endforeach
