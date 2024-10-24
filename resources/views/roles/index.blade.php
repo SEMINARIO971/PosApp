@@ -4,7 +4,19 @@
 
 
     <div class="container">
+        @if (session('success'))
+        <div class="bg-green-500 text-white p-4 rounded-md mb-4">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session('error'))
+        <div class="bg-red-500 text-white p-4 rounded-md mb-4">
+            {{ session('error') }}
+        </div>
+    @endif
         <div class="flex flex-row-reverse">
+
 
             <a href="{{ route('roles.create')}}" class="bg-blue-900 p-2 text-white rounded-lg ">Agregar Rol</a>
         </div>
