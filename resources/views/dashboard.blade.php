@@ -4,6 +4,13 @@
     @endif
 
 
+        {{-- @if($role->hasPermissionTo('nombre-del-permiso'))
+            <p>El rol tiene el permiso "nombre-del-permiso".</p>
+            @else
+            <p>El rol no tiene el permiso "nombre-del-permiso".</p>
+        @endif --}}
+
+
     <livewire:reportes-livewire lazy />
     <div class="flex justify-around bg-gray-300 p-2">
 

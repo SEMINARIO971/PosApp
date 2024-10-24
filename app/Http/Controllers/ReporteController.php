@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Product;
 use App\Models\Venta;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class ReporteController extends Controller
 {
     public function index()  {
+        $role= Role::with('permissions')->get();
         $salesData = Venta::selectRaw('SUM("Total") as total, DATE(created_at) as date')
         ->groupBy('date')
         ->orderBy('date')
@@ -16,6 +18,7 @@ class ReporteController extends Controller
     return view('dashboard',[
         'salesData'=>$salesData,
         'productData'=>$this->productReport(),
+        'role'=>$role
     ]);
     }
 
