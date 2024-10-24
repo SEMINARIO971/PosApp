@@ -64,9 +64,9 @@
         </div>
       </div>
       <!-- fin del logo -->
-    <div class="grid grid-cols-12 gap-4 p-4 bg-yellow-100">
+    <div class="grid grid-cols-12 gap-4 p-4 bg-yellow-100 ">
         <!-- Menú de Categorías -->
-        <div class="col-span-3 bg-blue-950 p-4">
+        <div class="col-span-3 bg-blue-950 p-4 h-[500px]">
             <h4 class="text-xl font-semibold mb-4 text-white">Menu</h4>
             <ul class="space-y-2">
                 @foreach($categories as $category)
@@ -81,8 +81,8 @@
         </div>
 
         <!-- Listado de Productos -->
-        <div class="col-span-6">
-            <div class=" overflow-auto h-1/3 grid grid-cols-3 p-4 ">
+        <div class="col-span-6 h-[500px]">
+            <div class=" overflow-auto  grid grid-cols-3 p-4 h-[500px]">
                 @foreach($products as $product)
                     <div class="bg-white shadow rounded-lg m-2">
                         <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
@@ -123,7 +123,7 @@
         </div>
 
         <!-- Carrito de Compras -->
-        <div class="col-span-3 bg-white p-2 rounded-lg">
+        <div class="col-span-3 bg-white p-2 rounded-lg h-[500px]">
             <h4 class="text-xl font-semibold mb-4">Articulos en el Carrito</h4>
             <ul class="space-y-2">
                 @forelse($cart as $item)
