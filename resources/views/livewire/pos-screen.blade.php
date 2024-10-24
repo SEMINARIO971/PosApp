@@ -66,7 +66,7 @@
       <!-- fin del logo -->
     <div class="grid grid-cols-12 gap-4 p-4 bg-yellow-100 ">
         <!-- Menú de Categorías -->
-        <div class="col-span-3 bg-blue-950 p-4 h-[500px]">
+        <div class="col-span-3 bg-blue-950 p-4 h-[900px]">
             <h4 class="text-xl font-semibold mb-4 text-white">Menu</h4>
             <ul class="space-y-2">
                 @foreach($categories as $category)
