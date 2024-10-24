@@ -38,9 +38,16 @@
                         <td class="py-2 px-4 border-b border-gray-300">
                             <form action="{{ route('roles.edit', $role->id) }}" method="GET" class="inline-block">
                                 @csrf
-                                <button type="submit" class="bg-orange-700 text-white font-bold py-2 px-4 rounded hover:bg-orange-600">
+                                <button type="submit" class="bg-gray-700 text-white font-bold py-2 px-4 rounded hover:bg-gray-600">
                                     Editar
                                 </button>
+                            </form>
+                        </td>
+                        <td class="py-2 px-4 border-b border-gray-300">
+                            <form action="{{ route('roles.destroy', $role->id) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este rol?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="bg-red-700 text-white font-bold py-2 px-4 rounded hover:bg-red-600">Eliminar </button>
                             </form>
                         </td>
                     </tr>
