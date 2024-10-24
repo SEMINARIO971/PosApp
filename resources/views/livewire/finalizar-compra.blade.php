@@ -95,7 +95,7 @@
                 setTimeout(() => {
                 window.location.href = '/pos';// Aquí puedes poner la lógica para refrescar la página
 
-                }, 2000);
+                }, 4000);
     });
 
 
