@@ -24,7 +24,7 @@ Route::get('/finalizar-compra', FinalizarCompra::class );
 
 Route::post('/prueba', [UserController::class, 'store'])->name('prueba.store');
 
-Route::get('/factura/{ventaId}', [FacturaController::class, 'generateInvoice']);
+Route::get('/factura/{ventaId}', [FacturaController::class, 'generateInvoice'])->name('factura');
 
 
 Route::get('/', function () {

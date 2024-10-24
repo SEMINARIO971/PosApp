@@ -21,6 +21,8 @@ class FinalizarCompra extends Component
     public $Direccion;
     public $Factura;
 
+    public $isFactura=false;
+
 function finalizar()  {
     $this->validate([
         'NombreCliente' => 'required|string|max:255',
@@ -57,7 +59,11 @@ function finalizar()  {
 
     $this->clearCart();
     $this->reset();
-    return redirect()->to('/pos');
+    sleep(3);
+    $this->dispatch('toast', msg: 'Compra Exitosa');
+    $this->dispatch('refreshPage');
+
+    return redirect()->route('factura', ['ventaId' => $venta->id]);
 
 
 } catch (\Exception $e) {

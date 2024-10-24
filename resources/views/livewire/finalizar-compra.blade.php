@@ -31,13 +31,20 @@
                 <label for="Direccion" class="block text-sm font-medium text-gray-700">Dirección</label>
                 <input type="text" id="Direccion" wire:model="Direccion" required class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
             </div>
-
-            <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                Finalizar Compra
-            </button>
+            @if($totalQuetzales>0)
+                <button type="submit" class="inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Finalizar Compra
+                </button>
+            @endif
             <a href="{{url('/pos')}}" class="inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
                Regresar al carrito
             </a>
+            @if($isFactura)
+                <a href="{{url('/factura/1')}}" class="inline-flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-orange-600 hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                    Ya puedes Descargar tu factura
+                </a>
+            @endif
+
         </form>
     </div>
 
@@ -75,20 +82,21 @@
             <h1 class="text-3xl font-bold mt-4">Total : Q{{  number_format($totalQuetzales,2)}}</h1>
 
         </div>
+
     </div>
     <script>
         document.addEventListener('livewire:init', ()=> {
 
 
-
-
-
             Livewire.on('toast', event => {
                 toast(event.msg, event.tipo)
             })
-            Livewire.on('clg',event=>{
-                console.log(event.msg)
-            })
+            Livewire.on('refreshPage', () => {
+                setTimeout(() => {
+                window.location.href = '/pos';// Aquí puedes poner la lógica para refrescar la página
+
+                }, 2000);
+    });
 
 
         })
