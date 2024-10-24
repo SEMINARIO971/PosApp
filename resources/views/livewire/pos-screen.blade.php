@@ -81,8 +81,8 @@
         </div>
 
         <!-- Listado de Productos -->
-        <div class="col-span-6 h-[500px]">
-            <div class=" overflow-auto  grid grid-cols-3 p-4 h-[500px]">
+        <div class="col-span-6 h-[800px]">
+            <div class=" overflow-auto  grid grid-cols-3 p-4 h-[800px]">
                 @foreach($products as $product)
                     <div class="bg-white shadow rounded-lg m-2">
                         <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
@@ -94,26 +94,8 @@
                             </button>
                         </div>
                     </div>
-                    <div class="bg-white shadow rounded-lg m-2">
-                        <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
-                        <div class="p-4">
-                            <h5 class="text-lg font-semibold">{{ $product->name }}</h5>
-                            <p class="text-gray-600">Q{{ $product->price }}</p>
-                            <button id="product{{$product->id}}" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" wire:click="addToCart({{ $product->id }})">
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
-                    <div class="bg-white shadow rounded-lg m-2">
-                        <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
-                        <div class="p-4">
-                            <h5 class="text-lg font-semibold">{{ $product->name }}</h5>
-                            <p class="text-gray-600">Q{{ $product->price }}</p>
-                            <button id="product{{$product->id}}" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" wire:click="addToCart({{ $product->id }})">
-                                Agregar
-                            </button>
-                        </div>
-                    </div>
+
+
 
 
 
@@ -123,7 +105,7 @@
         </div>
 
         <!-- Carrito de Compras -->
-        <div class="col-span-3 bg-white p-2 rounded-lg h-[500px]">
+        <div class="col-span-3 bg-white p-2 rounded-lg h-[800px]">
             <h4 class="text-xl font-semibold mb-4">Articulos en el Carrito</h4>
             <ul class="space-y-2">
                 @forelse($cart as $item)
