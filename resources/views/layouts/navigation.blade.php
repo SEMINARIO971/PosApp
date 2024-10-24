@@ -1,6 +1,6 @@
 <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-gray-400 md:w-64 dark-mode:text-gray-200 dark-mode:bg-gray-800" x-data="{ open: false }">
     <div class="flex flex-row items-center justify-between flex-shrink-0 px-8 py-4">
-        <img src="{{ asset('img/LogoEshop.png') }}" alt="" class="block h-16 w-auto fill-current rounded-full">
+        <img src="{{ asset('img/logoModa.png') }}" alt="" class="block h-16 w-auto fill-current rounded-full">
 
         <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">Pos V 1.0</a>
         <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
