@@ -63,11 +63,11 @@ class PermisoController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
         ]);
-    
+
         $permission = Permission::findOrFail($id);
         $permission->name = $request->input('name');
         $permission->save();
-    
+
         return redirect()->route('permisos.index')->with('success', 'Permission Actualizado!!.');
     }
 
@@ -76,6 +76,16 @@ class PermisoController extends Controller
      */
     public function destroy(string $id)
     {
-       
+       // Encontrar el permiso por su ID
+            $permission = Permission::findById($id);
+
+            if ($permission) {
+                // Eliminar el permiso
+                $permission->delete();
+
+                return redirect()->back()->with('success', 'El permiso ha sido eliminado correctamente.');
+            } else {
+                return redirect()->back()->with('error', 'El permiso no se ha encontrado.');
+            }
     }
 }
