@@ -82,9 +82,9 @@
 
         <!-- Listado de Productos -->
         <div class="col-span-6">
-            <div class="grid grid-cols-3 gap-4">
+            <div class=" overflow-auto h-1/3 grid grid-cols-3 p-4 ">
                 @foreach($products as $product)
-                    <div class="bg-white shadow rounded-lg overflow-hidden">
+                    <div class="bg-white shadow rounded-lg m-2">
                         <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
                         <div class="p-4">
                             <h5 class="text-lg font-semibold">{{ $product->name }}</h5>
@@ -94,6 +94,30 @@
                             </button>
                         </div>
                     </div>
+                    <div class="bg-white shadow rounded-lg m-2">
+                        <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
+                        <div class="p-4">
+                            <h5 class="text-lg font-semibold">{{ $product->name }}</h5>
+                            <p class="text-gray-600">Q{{ $product->price }}</p>
+                            <button id="product{{$product->id}}" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" wire:click="addToCart({{ $product->id }})">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bg-white shadow rounded-lg m-2">
+                        <img src="{{ asset('images/' . $product->img) }}" class="w-full h-48 object-cover" alt="{{ $product->name }}">
+                        <div class="p-4">
+                            <h5 class="text-lg font-semibold">{{ $product->name }}</h5>
+                            <p class="text-gray-600">Q{{ $product->price }}</p>
+                            <button id="product{{$product->id}}" class="mt-4 w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600" wire:click="addToCart({{ $product->id }})">
+                                Agregar
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
                 @endforeach
             </div>
         </div>
